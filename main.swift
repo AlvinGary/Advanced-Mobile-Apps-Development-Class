@@ -1,87 +1,145 @@
-// Bollean operator: And (&&), OR (||), NOT (!)
+import Foundation
 
+// print("your favourite food?")
+// let food = readLine() ?? ""
+// print(food)
 
-// var temperature = 75
+//Creating an Array
 
-// if (temperature >= 65) && (temperature <= 75) {
-//   print("The water is boiling")
-// } else if temperature < 65{
-//   print("It is too cold")
+// Array
+// var shoppingCart = ["Gado-Gado", "Sate"]
+// var ShoppingCart: [String] = ["Sate", "Soto"]
+
+// var shoppingCart: [String] = []
+// shoppingCart.append("Nasgor")
+// shoppingCart.insert("Bakso", at: 1)
+// shoppingCart.insert("Mie Goreng", at: 1)
+
+// print(shoppingCart)
+
+// var foodList = ["Cake", "Burger"]
+// shoppingCart += foodList
+
+// print(shoppingCart)
+
+// // Accessing Array
+
+// // shoppingCart = [] //mengosongkan array
+
+// if shoppingCart.isEmpty {
+//   print("Silahkan belanja dulu")
 // } else {
-//   print("It is too hot")
+//   for (index, item) in shoppingCart.enumerated() {
+//     print("No. \(index + 1) : \(item)")
+//   }
 // }
 
+// // Modifying Array
 
-// var isRain = false
+// var removeItem = shoppingCart.removeLast()
+// print("Menghapus \(removeItem)")
+// print(shoppingCart)
 
-// if !isRain {
-//   print("Bring your umbrella")
+// removeItem = shoppingCart.remove(at: 2)
+// print("Menghapus \(removeItem)")
+// print(shoppingCart)
+
+
+// Set
+
+//Creating Set Collection
+
+// var studentCode = Set<String>()
+// studentCode.insert("20220001")
+// studentCode.insert("20220002")
+
+// var studentCodes: Set = ["2022030", "2022004"]
+
+// // var studentCode: Set<String> = ["20220005", "20220006"]
+
+// print(studentCodes)
+
+// // Adding Set Collection
+
+// studentCodes.insert("2022010")
+// studentCodes.insert("2022510")
+
+// print(studentCodes)
+// print(studentCodes.sorted())
+
+// //Removing Set Collection
+
+// studentCodes.remove("2022510")
+// print(studentCodes)
+
+// studentCodes.removeFirst()
+// print(studentCodes)
+
+// // Iterating Set Collection
+
+// studentCodes.insert("2022011")
+// studentCodes.insert("2022512")
+
+// for code in studentCodes {
+//   print(code)
 // }
 
-
-// var numberOfWheels = 2
-
-// switch numberOfWheels {
-//   case 0:
-//     print("Missing wheels")
-//   case 1:
-//     print("Unicycle")
-//   case 2:
-//     print("Bicycle")
-//   default:
-//     print("That's a lot of wheels")
+// for (index, value) in studentCodes.enumerated() {
+//   print(index, value)
 // }
 
-
-// print(Int.max)
-// print(Int8.max)
-// print(Int16.max)
-// print(Int32.max)
-// print(Int64.max)
-
-
-// let distance: Int = 25
-
-// switch distance {
-//   case 0...9:
-//   print("Your destination is close")
-//   case 10...99:
-//   print("Your destination is not that far")
-//   case 100...999:
-//   print("Your destination is far from here")
-//   default:
-//   print("Where are you going?")
+// for code in studentCodes.sorted() {
+//   print(code)
 // }
 
+// Dictionary
 
-// let letter: Character = "x"
+// Creating Dictionary
 
-// switch letter {
-//   case "a", "i", "u", "e", "o":
-//   print("The letter is vowel")
-//   default:
-//   print("The letter is a consonant")
-// }
+var foods: [String: String] = ["F01" : "Bakso",                 "F02" : "Sate",
+ "B01" : "Es Teh",
+ "B02" : "Kopi"]
 
+print(foods)
 
-// var largerNumber: Int
+//Inserting Dictionary
 
-// let number1 = 40
-// let number2 = 5
+foods["F03"] = "Nasgor"
+foods["B03"] = "Susu"
 
-// // if number1 > number2 {
-// //   largerNumber = number1
-// // } else {
-// //   largerNumber = number2
-// // }
+print(foods)
 
-//   // Ini adalah bentuk dari ternary operator
-// largerNumber = number1 > number2 ? number1 : number2
+//Modifying Dictionary
 
-// // String literal
-// print("larger number is: \(largerNumber)")
-// print("larger number is:", (largerNumber))
+foods["F02"] = "Sate Ayam"
+foods["B02"] = "Kopi Jahe"
 
-// Math Operators: *, +, -, %
-//Bool operators: &&, ||, !
-//Ternary operators: ?, :
+print(foods)
+
+// Remove Dictionary
+
+foods.removeValue(forKey: "B03")
+
+print(foods)
+
+foods["F02"] = nil
+
+print(foods)
+
+// Iterating Dictionary
+
+for food in foods {
+  print(food)
+}
+
+for(index, value) in foods {
+  print(index, value)
+}
+
+for key in foods.keys {
+  print(key)
+}
+
+for value in foods.values {
+  print(value)
+}
