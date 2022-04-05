@@ -1,61 +1,292 @@
 import Foundation
-// /*** STRUCTURES ***/
 
-// /// Creating a (simple) Struct ///
+/*** STRUCTURES ***/
 
 // struct Hero {
 //   var name: String
-//   var healthPoint: Double
-//   var role: String = "Mage"
+//   var physicalAttack = 0
+//   var bonusAttack = 0
 
-//   func doPhysicalAttack() {
-//     print("\(name) does 111 damage point")
+//   // Instance method
+//   func physicalDamage() -> Int {
+//     physicalAttack + bonusAttack
 //   }
 // }
 
-// /// Instanciate a Struct ///
-// let xavier = Hero(name: "Xavier", healthPoint: 2_600)
+// var xavier = Hero(name: "Xavier")
+// xavier.physicalAttack = 1_200
+// xavier.bonusAttack = 100
+// print(xavier.physicalDamage())
 
-// print(xavier.name, "HP:\(xavier.healthPoint)", "Role: \(xavier.role)")
+/// Overloading and Mutatic Method
 
-// xavier.doPhysicalAttack()
+// struct Hero {
+//   var name: String
+//   var health: Int
 
-// /// Default Value for Initializer
+//   // mutating
+//   mutating func decreaseHP() {
+//     health -= 100
+//   }
 
-// let melissa = Hero(name: "Melissa", healthPoint: 2_460, role: "Marksman")
+//   // overloading
+//   mutating func decreaseHP(by point: Int){
+//     health -= point
+//   }
 
-// print("\n", melissa)
+//   mutating func 
+//   decreaseHP(instantKill: Bool) {
+//     if instantKill {
+//       health -= health
+//     }
+//   }
+// }
 
-struct Temperature {
-  var celsius: Double
+// var melissa = Hero(name: "Melissa", health: 2_300)
 
-  // Explicit Constructor
-  init(celsius: Double) {
-    self.celsius = celsius
+// melissa.decreaseHP()
+// melissa.decreaseHP()
+// print(melissa.health)
+
+// melissa.decreaseHP(by: 1_000)
+// print(melissa.health)
+
+// melissa.decreaseHP(instantKill: true)
+// print(melissa.health)
+
+/// Computed Property
+
+// struct Hero {
+//   // general properties...
+//   var name: String
+//   var baseDamage: Int
+//   var bonusDamage: Int
+
+//   // computed property #1
+//   var physicalDamage: Int {
+//     baseDamage + bonusDamage
+//   }
+
+//   // computed property #2
+//   var criticalDamage: Int {
+//     (baseDamage + bonusDamage) * 3
+//   }
+// }
+
+// var xavier = Hero(name: "Xavier",
+//   baseDamage: 1_000, bonusDamage: 50)
+
+// print(xavier.physicalDamage)
+// print(xavier.criticalDamage)
+
+/// Copying a Struct
+
+// struct Hero {
+//   var health = 100
+// }
+
+// var heroXYZ = Hero()
+// print("Hero XYZ HP: ", heroXYZ.health)
+
+// let shadow = heroXYZ
+// print("Shadow HP: ", shadow.health)
+
+// heroXYZ.health = 2_000
+// print()
+
+// print("Hero XYZ HP: ", heroXYZ.health)
+// print("Shadow HP: ", shadow.health)
+
+//=============================================//
+
+/*** CLASSES ***/
+
+/// Creating a (simple) class
+
+// class Equipment {
+//   var name: String = ""
+// }
+
+// let item = Equipment()
+
+/// Initializer (Constructor)
+
+// class Equipment {
+//   var name: String
+//   var tier: Int = 1
+
+//   init(name: String) {
+//     self.name = name
+//   }
+
+//   // Overloading Initializer
+//   init(name: String, tier: Int){
+//     self.name = name
+//     self.tier = tier
+//   }
+// }
+
+// let itemA = Equipment(name: "Item AAA")
+// print(itemA.name, itemA.tier)
+
+// let itemB = Equipment(name: "Item BBB", tier: 3)
+// print(itemB.name, itemB.tier)
+
+
+/// Inheritance
+
+// class Equipment {
+//   var name: String
+
+//   init(name: String) {
+//     self.name = name
+//   }
+
+//   func equip(){
+//     print("\(name) is equipped.")
+//   }
+// }
+
+// class AttackEquipment: Equipment {
+//   //
+// }
+
+// class DefenseEquipment: Equipment {
+//   //
+// }
+
+// let sword = AttackEquipment(name: "Legion Sword")
+// sword.equip()
+
+// let armor = DefenseEquipment(name: "Radiant Armor")
+// armor.equip()
+
+
+
+/// Overriding
+
+// class Equipment {
+//   var name: String
+
+//   init(name: String) {
+//     self.name = name
+//   }
+
+//   func equip() {
+//     print("\(name) is equipped.")
+//   }
+// }
+
+// class AttackEquipment: Equipment {
+//   var bonusATK: Int
+
+//   //Overriding initializer
+//   init
+//   (name: String, bonusATK: Int) {
+//     self.bonusATK = bonusATK
+    
+//     super.init(name: name)
+//   }
+
+//   override func equip() {
+//     print("\(name) with \(bonusATK) attack bonus is equipped")
+//   }
+// }
+
+// class DefenseEquipment: Equipment {
+//   var bonusDEF: Int
+
+//   //Overriding initializer
+//   init(name: String, bonusDEF: Int) {
+//     self.bonusDEF = bonusDEF
+
+//     super.init(name: name)
+//   }
+
+//   //Overriding method
+//   override func equip() {
+//     print("\(name) with \(bonusDEF) bonus defense is equipped.")
+//   }
+// }
+
+// let sword = AttackEquipment(name: "Legion Sword", bonusATK: 60)
+// sword.equip()
+
+// let armor = DefenseEquipment(name: "Radiant Armor", bonusDEF: 52)
+// armor.equip()
+
+
+//============================================//
+
+/*** STRUCT vs CLASS ***/
+
+// 1. Initializer dalam Struct comes free untuk semua propoerties yang dimiliki, sedangkan dalam lass initializer-nya harus ditulis eksplisit
+
+// 2 Inheritance hanya berlaku untuk Class (Struct tidak bisa punya child.sub-struct)
+
+// 3. Struct adalah tipe data VALUE type, sedangkan Class adalah tipe data REFERENCE type
+
+
+/// Struct is a VALUE type
+
+// struct Hero {
+//   var name: String
+//   var health: Int
+
+//   func castSkill(_ name: String) {
+//     print("\(self.name) casting: \(name)")
+//   }
+
+//   mutating func decreaseHP(by point: Int) {
+//     health -= point
+//   }
+// }
+
+// var sun = Hero(name: "Sun", health: 2_750)
+
+// sun.castSkill("Clone Techniques")
+
+// var sunCopy = sun
+
+// print("Original Sun and his copy got attacked!")
+
+// sun.decreaseHP(by: 1_000)
+// sunCopy.decreaseHP(by: 2_000)
+
+// print("Sun (original) HP: ", sun.health)
+// print("Sun(copy) HP: ", sunCopy.health)
+
+
+/// Class is a REFERENCE type
+
+class Hero {
+  var name: String
+  var health: Int
+
+  init(name: String, health: Int) {
+    self.name = name
+    self.health = health
   }
 
-  init(fahrenheit: Double) {
-    celsius = (fahrenheit - 32) / 1.8
+  func castSkill(_ name: String) {
+  print("\(self.name) casting: \(name)")
   }
 
-  init(kelvin: Double) {
-    celsius = (kelvin - 273.15)
-  }
-
-  init() {
-    celsius = 0
+  func decreaseHP(by point: Int) {
+  health -= point
   }
 }
 
-let roomTemperature = Temperature(celsius: 26.5)
+var atlas = Hero(name: "Atlas", health: 2_800)
 
-let boilingWater = Temperature(fahrenheit: 220)
+atlas.castSkill("Perfect Match")
 
-let diamondDust = Temperature(kelvin: 5)
+var atlasClone = atlas
 
-let freezingWater = Temperature() // c=0
+print("Original Atlas and his clone got attacked!")
 
-print(roomTemperature.celsius)
-print(boilingWater.celsius)
-print(diamondDust.celsius)
-print(freezingWater.celsius)
+atlas.decreaseHP(by: 800)
+atlasClone.decreaseHP(by: 1_300)
+
+print("Atlas (original) HP: ", atlas.health)
+print("Atlas (copy) HP: ", atlasClone.health)
