@@ -1,292 +1,115 @@
-import Foundation
+/*** PROTOCOLS ***/
 
-/*** STRUCTURES ***/
+/// Declaring a Protocol
 
-// struct Hero {
-//   var name: String
-//   var physicalAttack = 0
-//   var bonusAttack = 0
-
-//   // Instance method
-//   func physicalDamage() -> Int {
-//     physicalAttack + bonusAttack
-//   }
+// protocol ProtokolKesehatan {
+//   func pakaiFaceMask(_ brand: String)
+//   func jagaJarak(minimal meter: Int)
+//   func cuciTangan(withSabun: Bool)
+//   func checkInPeduliLindungi()
 // }
 
-// var xavier = Hero(name: "Xavier")
-// xavier.physicalAttack = 1_200
-// xavier.bonusAttack = 100
-// print(xavier.physicalDamage())
 
-/// Overloading and Mutatic Method
+// /// Implementing a Protocol
 
-// struct Hero {
+// struct Tempat: ProtokolKesehatan {
 //   var name: String
-//   var health: Int
 
-//   // mutating
-//   mutating func decreaseHP() {
-//     health -= 100
+//   func pakaiFaceMask(_ brand: String) {
+//     print("Di \(name) wajib pakai face mask merk \(brand)")
 //   }
-
-//   // overloading
-//   mutating func decreaseHP(by point: Int){
-//     health -= point
-//   }
-
-//   mutating func 
-//   decreaseHP(instantKill: Bool) {
-//     if instantKill {
-//       health -= health
+  
+//   func jagaJarak(minimal meter: Int){
+//     print("Di \(name) jaga jarak minimal \(meter) m")
+//   }  
+  
+//   func cuciTangan(withSabun: Bool){
+//     if withSabun{
+//       print("Di \(name) wajib cuci tangan pakai sabun")
+//     }else{
+//       print("Di \(name) wajib cuci tangan")
 //     }
 //   }
-// }
-
-// var melissa = Hero(name: "Melissa", health: 2_300)
-
-// melissa.decreaseHP()
-// melissa.decreaseHP()
-// print(melissa.health)
-
-// melissa.decreaseHP(by: 1_000)
-// print(melissa.health)
-
-// melissa.decreaseHP(instantKill: true)
-// print(melissa.health)
-
-/// Computed Property
-
-// struct Hero {
-//   // general properties...
-//   var name: String
-//   var baseDamage: Int
-//   var bonusDamage: Int
-
-//   // computed property #1
-//   var physicalDamage: Int {
-//     baseDamage + bonusDamage
-//   }
-
-//   // computed property #2
-//   var criticalDamage: Int {
-//     (baseDamage + bonusDamage) * 3
+  
+//   func checkInPeduliLindungi() {
+//     print("Di \(name) wajib checkin Peduli Lindungi")
 //   }
 // }
 
-// var xavier = Hero(name: "Xavier",
-//   baseDamage: 1_000, bonusDamage: 50)
+// let uc = Tempat(name: "UC")
 
-// print(xavier.physicalDamage)
-// print(xavier.criticalDamage)
-
-/// Copying a Struct
-
-// struct Hero {
-//   var health = 100
-// }
-
-// var heroXYZ = Hero()
-// print("Hero XYZ HP: ", heroXYZ.health)
-
-// let shadow = heroXYZ
-// print("Shadow HP: ", shadow.health)
-
-// heroXYZ.health = 2_000
+// uc.pakaiFaceMask("KN95")
+// uc.jagaJarak(minimal: 2)
+// uc.cuciTangan(withSabun: true)
+// uc.checkInPeduliLindungi()
 // print()
 
-// print("Hero XYZ HP: ", heroXYZ.health)
-// print("Shadow HP: ", shadow.health)
+// /// Sebuah Mall, bernama PTC, diharuskan mengikuti protokol kesehatan
 
-//=============================================//
+// /// Buat pernyataan diatas dalam bentuk OOP
 
-/*** CLASSES ***/
-
-/// Creating a (simple) class
-
-// class Equipment {
-//   var name: String = ""
-// }
-
-// let item = Equipment()
-
-/// Initializer (Constructor)
-
-// class Equipment {
+// class Building {
 //   var name: String
-//   var tier: Int = 1
+//   var location: String
 
-//   init(name: String) {
+//   init(name: String, location: String){
 //     self.name = name
-//   }
-
-//   // Overloading Initializer
-//   init(name: String, tier: Int){
-//     self.name = name
-//     self.tier = tier
+//     self.location = location
 //   }
 // }
 
-// let itemA = Equipment(name: "Item AAA")
-// print(itemA.name, itemA.tier)
-
-// let itemB = Equipment(name: "Item BBB", tier: 3)
-// print(itemB.name, itemB.tier)
-
-
-/// Inheritance
-
-// class Equipment {
-//   var name: String
-
-//   init(name: String) {
-//     self.name = name
+// class Mall: Building, ProtokolKesehatan {
+//   func pakaiFaceMask(_ brand: String) {
+//     print("Di \(name) wajib pakai face mask merk \(brand)")
 //   }
-
-//   func equip(){
-//     print("\(name) is equipped.")
+  
+//   func jagaJarak(minimal meter: Int){
+//     print("Di \(name) jaga jarak minimal \(meter) m")
+//   }  
+  
+//   func cuciTangan(withSabun: Bool){
+//     if withSabun{
+//       print("Di \(name) wajib cuci tangan pakai sabun")
+//     }else{
+//       print("Di \(name) wajib cuci tangan")
+//     }
 //   }
-// }
-
-// class AttackEquipment: Equipment {
-//   //
-// }
-
-// class DefenseEquipment: Equipment {
-//   //
-// }
-
-// let sword = AttackEquipment(name: "Legion Sword")
-// sword.equip()
-
-// let armor = DefenseEquipment(name: "Radiant Armor")
-// armor.equip()
-
-
-
-/// Overriding
-
-// class Equipment {
-//   var name: String
-
-//   init(name: String) {
-//     self.name = name
-//   }
-
-//   func equip() {
-//     print("\(name) is equipped.")
+  
+//   func checkInPeduliLindungi() {
+//     print("Di \(name) wajib checkin Peduli Lindungi")
 //   }
 // }
 
-// class AttackEquipment: Equipment {
-//   var bonusATK: Int
+// let ptc = Mall(name: "PTC", location: "Surabaya")
 
-//   //Overriding initializer
-//   init
-//   (name: String, bonusATK: Int) {
-//     self.bonusATK = bonusATK
-    
-//     super.init(name: name)
-//   }
-
-//   override func equip() {
-//     print("\(name) with \(bonusATK) attack bonus is equipped")
-//   }
-// }
-
-// class DefenseEquipment: Equipment {
-//   var bonusDEF: Int
-
-//   //Overriding initializer
-//   init(name: String, bonusDEF: Int) {
-//     self.bonusDEF = bonusDEF
-
-//     super.init(name: name)
-//   }
-
-//   //Overriding method
-//   override func equip() {
-//     print("\(name) with \(bonusDEF) bonus defense is equipped.")
-//   }
-// }
-
-// let sword = AttackEquipment(name: "Legion Sword", bonusATK: 60)
-// sword.equip()
-
-// let armor = DefenseEquipment(name: "Radiant Armor", bonusDEF: 52)
-// armor.equip()
+// ptc.pakaiFaceMask("KF94")
+// ptc.jagaJarak(minimal: 2)
+// ptc.cuciTangan(withSabun: true)
+// ptc.checkInPeduliLindungi()
 
 
-//============================================//
 
-/*** STRUCT vs CLASS ***/
+/// protocol in Game App
 
-// 1. Initializer dalam Struct comes free untuk semua propoerties yang dimiliki, sedangkan dalam lass initializer-nya harus ditulis eksplisit
+let potion1 = Potion(name: "Small Potion", quantity: 100)
+print(potion1.name, potion1.quantity)
+potion1.store(in: "Item Box")
 
-// 2 Inheritance hanya berlaku untuk Class (Struct tidak bisa punya child.sub-struct)
+potion1.consume(by: 15)
+print(potion1.name, potion1.quantity)
 
-// 3. Struct adalah tipe data VALUE type, sedangkan Class adalah tipe data REFERENCE type
+print()
 
+let sword1 = Sword(name: "Long Sword")
+print(sword1.name)
+sword1.store(in: "Backpack")
+sword1.equip()
 
-/// Struct is a VALUE type
+print()
 
-// struct Hero {
-//   var name: String
-//   var health: Int
+let shield1 = Shield(name: "Iron Shield")
+print(shield1.name)
+shield1.store(in: "In-Hand")
+shield1.equip()
 
-//   func castSkill(_ name: String) {
-//     print("\(self.name) casting: \(name)")
-//   }
-
-//   mutating func decreaseHP(by point: Int) {
-//     health -= point
-//   }
-// }
-
-// var sun = Hero(name: "Sun", health: 2_750)
-
-// sun.castSkill("Clone Techniques")
-
-// var sunCopy = sun
-
-// print("Original Sun and his copy got attacked!")
-
-// sun.decreaseHP(by: 1_000)
-// sunCopy.decreaseHP(by: 2_000)
-
-// print("Sun (original) HP: ", sun.health)
-// print("Sun(copy) HP: ", sunCopy.health)
-
-
-/// Class is a REFERENCE type
-
-class Hero {
-  var name: String
-  var health: Int
-
-  init(name: String, health: Int) {
-    self.name = name
-    self.health = health
-  }
-
-  func castSkill(_ name: String) {
-  print("\(self.name) casting: \(name)")
-  }
-
-  func decreaseHP(by point: Int) {
-  health -= point
-  }
-}
-
-var atlas = Hero(name: "Atlas", health: 2_800)
-
-atlas.castSkill("Perfect Match")
-
-var atlasClone = atlas
-
-print("Original Atlas and his clone got attacked!")
-
-atlas.decreaseHP(by: 800)
-atlasClone.decreaseHP(by: 1_300)
-
-print("Atlas (original) HP: ", atlas.health)
-print("Atlas (copy) HP: ", atlasClone.health)
+print()
